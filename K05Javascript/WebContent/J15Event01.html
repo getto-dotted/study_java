@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>J15Event01.html</title>
+<script>
+	/* 
+	HTML의 모든 엘리먼트에는 이벤트를 발생시킬 수 있다.
+	이벤트 발생여부를 감지하는 객체를 이벤트리스너(혹은 핸들러)라고 한다.
+	리스너는 주로 태그에 속성으로 기술한다.
+	
+	이벤트 처리방법1 : DOM객체에 addEventListener를 이용하여
+	이벤트와 처리할 무명함수를 연결한다.*/
+	alert('HTML문서의 시작(1)');
+
+	window.addEventListener("load", function(){
+		alert("load이벤트 : addEventListener()사용(3)");
+	});
+
+	alert('HTML문서의 끝(2)');
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>J01Variable.html-변수</title>
+<script>
+/*
+자바스크립트
+-JS에서는 대소문자를 구분한다.
+-하나의 명령행이 끝나면;으로 명령의 끝을 알린다.
+-변수에 대입한 값에 따라 자료형이 결정된다.
+-변수선언은 var 키워드를 통해 이루어진다.
+ */
+//1.변수선언
+var num;
+document.write("<h2>변수초기화전</h2>");
+document.write("num의 자료형:"+typeof(num)+", num에 저장된 데이터:"+ num);/*
+				변수 선언후 초기화하지 않았으므로 undefined가 출력된다.
+				typeof() : 해당 변수의 자료형을 반환한다.*/
+
+//2.변수초기화
+num = 100;//숫자로 변수초기화
+document.write("<h2>변수 초기화 후</h2>");
+document.write("num의 자료형:"+typeof(num)+", num에 저장된 데이터:"+ num);
+//자료형 : number, 출력:100
+
+
+num ='문자열입니다';
+document.write("<br/>num의 자료형:"+typeof(num)+", num에 저장된 데이터:"+ num);
+/*
+자료형 : string
+※JS에서는 문자열을 표현할때 '(싱글), "(더블) 모두 사용이 가능하다.
+즉 문자와 문자열을 구분하지 않는다.
+ */
+
+num = true;
+document.write("<br/>num의 자료형:"+typeof(num)+", num에 저장된 데이터:"+ num);
+//자료형 : boolean, 출력: true
+
+/*
+	NaN(Not a Number) : JS에서 숫자가 아님을 표현하는 용어이다.
+	isNaN() : 변수가 number 타입이면 false, number 타입이 아닐때 true를 반환하는 함수이다.
+ */
+var num1=10, num2, str1="자바스크립트", str2;
+document.write("<br/>num1+num2=" + (num1+num2));/*
+		숫자+undefined의 형태이므로 숫자가 될 수 없다.*/
+
+
+if (isNaN(num1+num2)) {
+	alert("NaN이다. 즉 숫자가 아니다");
+} else {
+	alert("NaN이 아니다. 즉 숫자이다");
+}
+document.write("<br/>str1+str2=" + (str1+str2));
+document.write("<br/>num1+str1=" + (num1+str1));
+
+/*
+JS에서는 숫자, 문자, boolean을 제외한 나머지는 모두 object타입이 된다.
+ */
+document.write("<h2>기타자료형</h2>");
+var date=new Date();
+document.write("date의 자료형:"+typeof(date)+", date에 저장된 데이터:"+ date);
+document.write("<br/>"+(date.getYear()+1900)+"년 "+(date.getMonth()+1)+"월 "+date.getDate()+"일");
+/*
+null의 의미
+	: 아무런 값이 없다 라는 의미
+	0이거나 ' '," "는 null이 아니라 빈문자열 혹은 0이 된다.
+ */
+var nullvar=null;
+document.write("<br/>nullvar의 자료형:"+typeof(nullvar)+", nullvar에 저장된 데이터:"+ nullvar);
+document.write("<br/>document의 자료형:"+typeof(document)+", document에 저장된 데이터:"+ document);
+//var 키워드로 변수를 선언하지 않고 사용하는 경우 오류발생됨.
+//document.write("<br/>novar="+novar);
+var novar = 100;
+document.write("<br/>novar의 자료형:"+typeof(novar)+", novar에 저장된 데이터:"+ novar);
+
+/*
+자료형에 대한 정리
+	실수나 정수 : number타입
+	문자열 ('',""): string타입
+	true, false : boolean 타입
+	document, window, null, Date, Math등 : Object 타입
+	변수정의 후 초기화하지 않은 경우 : undefined 타입
+	변수를 정의하지 않고 출력 : Error
+ */
+
+/*
+ES5->ES6
+var->let
+	:var 키워드를 통해 변수를 선언하면 해당 변수는
+	호이스팅(hoisting)된다. 호이스팅이란 정의된 변수가
+	해당 스코프의 최상단으로 끌어올려지는 것을 말한다.
+	ES5스펙이 가진 문제점 중의 하나이다.
+ */
+
+</script>
+</head>
+<body>
+
+
+
+
+
+
+</body>
+</html>

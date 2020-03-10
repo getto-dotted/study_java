@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>J14WindowObject03.html</title>
+	<script>
+		/* 
+		팝업창 : 광고나 공지사항을 게시할때 주소 사용하는 방법
+
+		window.open("경로, "창의 이름", "창의 속성 : 모양, 위치 등);
+		-open() 메소드는 윈도우 객체를 반환함
+		-팝업창을 여러개 띄울때 창의 이름이 같으면 하나의 창에 계속 띄워짐
+
+		#팝업창의 모양을 설정하기 위한 속성
+			width : 팝업창의 가로폭
+			height : 팝업창의 세로폭
+			top : 팝업창을 띄울때 Y좌표(모니터를 기준으로 상단에서 
+					띄워짐)
+			left : 팝업창을 띄울때 X좌표(모니터를 기준으로 좌측에서
+					띄워짐)
+
+			location : 주소표시줄 on/off
+			toolbar : 도구모음창 on/off
+			menubar : 메뉴바 on/off
+			scrollbars : 스크롤바 on/off
+			resizable : 팝업창의 크기조절 가능여부 on/off
+
+		*/
+		function findZipcode() {
+			window.open("./pages/zipcode.html", "Zip", "width=500, height=500, left=400, top=150," +
+				"location=yes, toolbar=yes, menubar=yes, scrollbars=yes, resizable=yes");
+
+		}
+		//팝업창의 참조값을 저장하기 위한 전역변수.
+		var winObj1;
+
+		function popFirst() {
+			/* 부모창에서 팝업창을 제어하기 위해 open()함수로 창을 띄울때
+			참조값으로 팝업창의 이름을 지정한다. */
+			winObj1 = window.open("./pages/popup01.html", "pop1", "width=500, height=500, left=0, top=0");
+		}
+		function popClose() {
+			alert("장비를 정지합니다.");
+			/* 팝업창의 참조변수를 이용해서 창을 닫아준다. */
+			winObj1.close();
+		}
+
+
+	</script>
+</head>
+
+<body>
+	<h2>팝업창 제어하기</h2>
+	<h3>여기는 부모창임</h3>
+	<fieldset>
+		<legend>우편번호검색하기</legend>
+		<table>
+			<tr>
+				<td>우편번호</td>
+				<td>
+					<input type="text" id="zipcode" size="5" />
+					<button onclick="findZipcode();">
+						우편번호찾기</button>
+				</td>
+			</tr>
+			<tr>
+				<td>기본주소</td>
+				<td>
+					<input type="text" id="addr1" size="30" />
+				</td>
+			</tr>
+			<tr>
+				<td>상세주소</td>
+				<td>
+					<input type="text" id="addr2" size="40" />
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+
+	<h2>부모창에서 팝업창 제어하기</h2>
+	<p style="text-align: center;">
+		<button onclick="popFirst()"">첫번째 팝업창 열기</button>
+		<button onclick=" popClose()">첫번째 팝업창 닫기</button>
+	</p>
+
+</body>
+
+</html>

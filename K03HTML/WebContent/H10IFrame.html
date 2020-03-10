@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>H10IFrame.html</title>
+<!-- 
+iframe 태그 : Inline Frame 으로 페이지 내에 또다른 페이지를 삽입해야 할때 사용하는 태그이다.
+
+주요 속성
+	-src : 프레임 안의 내용을 구성할 문서경로 혹은 URL
+	-frameborder: iframe의 테두리 두께
+	-scrolling
+		*auto : 프레임 안의 내용에 따라 스크롤바가 자동으로 생성됨
+		* no : 내용이 많더라도 스크롤바를 생성하지 않음
+		* yes : 내용과 상관없이 무조건 스크롤바를 생성
+	-marginheight : 프레임과 내용사이의 세로여백
+	-marginwidth : 프레임과 내용 사이의 가로여백
+	
+	Inline Element (가로형 배치)
+	※target에 대해서는 ./iframe/innerFrame02.html에서 설명 계속
+ -->
+</head>
+<body>
+	<h4>iframe의 이름 : topWin</h4>
+	<iframe src="./iframe/InnerFrame01.html" name="topWin" frameborder="1"
+		scrolling="auto" width="500" height="500"></iframe>
+		
+	<h2>iframe Bottom(하단)</h2>
+	<p>
+		<a href="http://nate.com" target="topWin">topWin에서 이동함</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="http://nate.com" target="innerWin01">innerWin01에서 이동함</a>	
+	</p>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

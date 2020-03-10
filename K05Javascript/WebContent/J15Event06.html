@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>J15Event06.html</title>
+	<script>
+		function focusNBlur(num) {
+			if (num == 1) {
+				document.getElementById("span").innerText = "focus이벤트 발생됨";
+			}
+			else if (num == 2) {
+				document.getElementById("span").innerText = "blur이벤트 발생됨";
+			}
+		}
+		/* 
+		JS에서 CSS제어하기
+		: DOM.style.CSS속성 = '속성값';
+		단, 속성에 -(하이픈)이 있는 경우 제거하고 첫글자를 대문자로
+		변경하면 된다.
+		Ex)
+			font-size: 10px => DOM.style.fontSize='10px';
+			color:red; ==> DOM.style.color = 'red';
+		*/
+		function tdYellow(obj) {
+			obj.style.backgroundColor = 'yellow';
+		}
+		function tdGray(obj) {
+			obj.style.backgroundColor = 'gray';
+		}
+		function tdWhite(obj) {
+			obj.style.backgroundColor = 'white';
+		}
+		function fontScale(obj) {
+			obj.style.fontSize = '1.5em';
+			obj.style.color = 'red';
+		}
+	</script>
+</head>
+
+<body>
+	<!-- 
+		focus : 포커스를 얻었을 때
+		blur : 포커스를 잃었을 때 발생되는 이벤트
+	 -->
+	<h2>focus & blur 이벤트</h2>
+	<input type="text" onfocus="focusNBlur(1);" onblur="focusNBlur(2);" />
+	<span id="span" style="font-size: 1.5em;">여기에 이벤트 표시</span>
+
+	<!-- 
+		mouseover : 마우스를 올렸을때
+		mouseout : 마우스를 올렸다가 내렸을때
+		onmousedown : 마우스를 클릭할때
+		onclick : 마우스를 클릭했다가 뗐을때 발생하는 이벤트
+	 -->
+	<h2>Mouse 이벤트</h2>
+	<style>
+		.td_gray {
+			background-color: gray;
+		}
+
+		.td_white {
+			background-color: #ffffff;
+		}
+
+		.td_black {
+			background-color: #000000;
+			color: white;
+		}
+	</style>
+
+	<h3>mouseover/mouseout/onmousedown 이벤트 적용</h3>
+	<table style="border-spacing:1px; width:400px; background-color:gray;">
+		<tr class="td_black">
+			<th>번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+		</tr>
+		<tr class="td_white" onmouseover="tdYellow(this);" onmouseout="tdWhite(this);">
+			<td>1</td>
+			<td onclick="fontScale(this);">어벤져스</td>
+			<td>페이즈1</td>
+		</tr>
+		<tr class="tdGray" onmouseover="tdYellow(this);" onmouseout="tdGray(this);">
+			<td>2</td>
+			<td onclick="fontScale(this);">어벤져스2-울트론의시대</td>
+			<td>페이즈2</td>
+		</tr>
+		<tr class="td_white" onmouseover="tdYellow(this);" onmouseout="tdWhite(this);">
+			<td>3</td>
+			<td onmousedown="fontScale(this);">어벤져스3-인피니티워</td>
+			<td>페이즈3</td>
+		</tr>
+		<tr class="tdGray" onmouseover="tdYellow(this);" onmouseout="tdGray(this);">
+			<td>4</td>
+			<td onmousedown="fontScale(this);">어벤져스4-엔드게임</td>
+			<td>페이즈4</td>
+		</tr>
+	</table>
+
+
+</body>
+
+</html>

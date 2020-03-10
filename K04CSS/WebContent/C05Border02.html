@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>C05Border02.html</title>
+<style>
+div div {
+	width: 200px;
+	height: 200px;
+}
+
+.radius {
+	border: 5px solid red;
+	background-color: blue;
+	text-align: center;
+	line-height: 200px;
+	color: yellow;
+	/* 좌측상단부터 시계방향으로 깎아낼 크기를 지정한다.
+		전체크기의 50%만큼 깎아내면 원을 만들 수 있다.
+		 */
+	border-radius: 100px 80px 30px 60px;
+}
+
+#shadow {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background-color: red;
+	text-align: center;
+	line-height: 200px;
+	/* 
+		속성값의 순서 : 좌측여백 상단여백 흐림정도 색상;
+		※흐림의 정도는 0에 가까울수록 선명해지고, 커질수록 흐려진다.
+		*/
+	box-shadow: 20px 30px 40px #000000;
+}
+</style>
+</head>
+<body>
+
+	<div>
+		<div class="radius">꼭지점 둥글게~~</div>
+		<div id="shadow">그림자효과 주기</div>
+	</div>
+
+
+	<!-- AAA박스의 경우 가로200 +보더0이므로 전체사이즈 200
+		 BBB박스의 경우 가로200 +보더5*2+패딩5*2 이므로 전체 사이즈 210이 된다.
+		 
+		 이때 box-sizing 속성을 content-box로 주게되면 전체 영역이 늘어나므로 
+		 두 박스의 크기는 달라진다.
+		 border-box로 주게되면 전체영역은 보더나 패딩에 상관없이
+		 width 속성에 지정한데로 200px이 된다. 
+		 
+	 box-sizing : 박스를 기본값으로 세팅한데로 크기를 유지할지를 결정하는 속성
+	 	content-box : 기본값(디폴트)
+	 	border-box : 가로 세로 모두 패딩값과 보더값을 포함하는 값.
+	 		즉 패딩과 보더 상관없이 설정한 크기대로 표현하게 된다.-->
+
+	<h2>box-sizing 속성</h2>
+	<div
+		style="border: 0px solid red; background-color: black; width: 200px; ">AAA</div>
+	<div
+		style="border: 5px solid red; background-color: green; width: 200px; padding: 5px; box-sizing: border-box;">BBB</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

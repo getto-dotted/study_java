@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+/*전체 문서의 스타일 지정*/
+* {
+	text-align: center;
+	font-size: 35px;
+	font-weight: bold;
+	color: white;
+}
+
+table {
+	background-color: #DDDDDD;
+}
+
+.bc {
+	background-color: #7B7B7B;
+	border-radius: 20px;
+	font-size: 1.5em;
+}
+
+#display {
+	text-align: right;
+	background-color: #70C738;
+	border-radius: 20px;
+	font-size: 2em;
+	color: black;
+}
+
+.number {
+	background-color: #373737;
+	border-radius: 20px;
+	font-size: 1.4em;
+}
+
+.title {
+	text-align: center;
+	background-color: white;
+	font-size: 1.2em;
+	color: black;
+}
+
+.pmmd {
+	background-color: #FA960A;
+	border-radius: 20px;
+	font-size: 2em;
+}
+
+.eval {
+	background-color: #373737;
+	border-radius: 20px;
+}
+</style>
+<script>
+	/* 계산을 위한 배열과 입력값을 보여줄 배열을 생성 */
+	var showCal = new Array();
+	var showArray = new Array();
+	/* 
+	 TD를 클릭시 발생하는 이벤트 함수 지정
+	 clickTdEvent(tdObj)로 this를 통해 TD의 DOM값을 전달한다.
+	 첫 입력값이 0이나 .일 경우 자동으로 소수점으로 처리하도록 0.으로 바꿔준다.
+	 첫 입력값을 사칙연산기호로 입력할 경우 무시할 수 있도록 제거한다.(계산식)
+	 단 -(마이너스)의 경우 첫 입력값의 음수표현에 사용될 수 있으므로 제외한다.
+	 */
+	function clickTdEvent(tdObj) {
+		showCal.push(tdObj.id);
+		if (showCal[0] == 0) {
+			showCal[1] = (".");
+		}
+		if (showCal[0] == ".") {
+			showCal[0] = 0;
+			showCal[1] = (".");
+		}
+		if (showCal[0] == "+" || showCal[0] == "*" || showCal[0] == "/") {
+			showCal.pop();
+		}
+		showArray.push(tdObj.id);
+		if (showArray[0] == 0) {
+			showArray[1] = (".");
+		}
+		if (showArray[0] == ".") {
+			showArray[0] = 0;
+			showArray[1] = (".");
+		}				
+		display();
+	}
+	/* 
+	 배열명.join(""); 을 통해 배열내의 값들을 콤마 없이 이어서 보여준다.
+	 ""(빈문자열)을 넣지 않을 경우 콤마가 자동으로 삽입된다. 	*/
+	function display() {
+		if (!showArray.length) {			
+			document.getElementById("display").innerHTML = 0;	
+		} else {			
+			document.getElementById("display").innerHTML = showArray.join("");			
+		}
+	}
+	/* 
+	배열명.pop(); 함수를 사용해 배열의 마지막 값을 지워준다.
+	배열의 크기가 0이 될 경우 화면에 0을 출력한다.*/
+	function backspace() {
+		showCal.pop();
+		showArray.pop();		
+		if (!showArray.length) {
+			document.getElementById("display").innerHTML = 0;
+		} else {
+			display();
+		}
+	}
+	/* 
+	배열을 모두 0으로 초기화하고 화면에 0을 출력한다.*/
+	function reset() {
+		document.getElementById("display").innerHTML = 0;
+		showCal = [];
+		showArray = [];
+	}
+	/*
+	eval(배열); 함수를 통해 배열이 가진 문자열을 연산하고 다음 계산을 위해
+	연산된 값으로 배열을 초기화한다.*/
+	function calNum() {
+		showCal = [ eval(showCal.join("")) ];
+		showArray = [ eval(showCal.join("")) ];	
+		document.getElementById("display").innerHTML = eval(showCal.join(""));
+	}
+	/*
+	사칙연산기호를 누르면 계산식에서는 직전의 배열값이 사칙연산이면 지우고 마지막으로 입력받은 사칙연산 기호를 남김.
+	반환식에서는 마지막으로 입력받은 값이 사칙연산이면 해당 값을 지운 문자열을 반환한다.
+	숫자 없이 사칙연산 기호를 사용할 경우 화면에 표시하지 않는다.
+	 */
+	function deletePmmd() {
+
+		if (showCal[showCal.length - 2] == "+"
+				|| showCal[showCal.length - 2] == "-"
+				|| showCal[showCal.length - 2] == "*"
+				|| showCal[showCal.length - 2] == "/") {
+			showCal.splice(showCal.length - 2, 1);
+		}
+		if (!showArray.length) {
+			showArray.pop();
+			display();
+		}		
+		else {
+			showArray.pop();
+			display();
+			showArray =[];
+		}		
+	}
+</script>
+</head>
+<body>
+	<table width="700px" border="1" cellpadding="10">
+		<tr>
+			<td class="title" colspan="4"><br />계산기<br /> <br /></td>
+		</tr>
+		<tr>
+			<td id="display" colspan="4">0</td>
+		</tr>
+		<tr>
+			<td class="bc" colspan="2" width=50%; onclick="backspace()">Backspace</td>
+			<td class="bc" colspan="2" onclick="reset()">C</td>
+		</tr>
+		<tr>
+			<td class="number" id="1" width=25%; onclick="clickTdEvent(this)">1</td>
+			<td class="number" id="2" width=25%; onclick="clickTdEvent(this)">2</td>
+			<td class="number" id="3" width=25%; onclick="clickTdEvent(this)">3</td>
+			<td class="pmmd" id="+" width=25%;
+				onclick="clickTdEvent(this); deletePmmd();">+</td>
+			<!-- 1개의 이벤트에 ;를 넣어서 여러개의 함수를 작동시킬 수 있다. -->
+		</tr>
+		<tr>
+			<td class="number" id="4" onclick="clickTdEvent(this)">4</td>
+			<td class="number" id="5" onclick="clickTdEvent(this)">5</td>
+			<td class="number" id="6" onclick="clickTdEvent(this)">6</td>
+			<td class="pmmd" id="-" onclick="clickTdEvent(this); deletePmmd();">-</td>
+		</tr>
+		<tr>
+			<td class="number" id="7" onclick="clickTdEvent(this)">7</td>
+			<td class="number" id="8" onclick="clickTdEvent(this)">8</td>
+			<td class="number" id="9" onclick="clickTdEvent(this)">9</td>
+			<td class="pmmd" id="*" onclick="clickTdEvent(this); deletePmmd();">×</td>
+		</tr>
+		<tr>
+			<td class="eval" onclick="calNum()">=</td>
+			<td class="number" id="0" onclick="clickTdEvent(this)">0</td>
+			<td class="number" id="." onclick="clickTdEvent(this)">.</td>
+			<td class="pmmd" id="/" onclick="clickTdEvent(this); deletePmmd();">÷</td>
+		</tr>
+	</table>
+	
+	<!-- 3자리마다 콤마를 넣는것/첫 입력값이 -일 때 -를 표기하는 것 -->
+</body>
+</html>

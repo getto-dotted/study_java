@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>J15Event05.html</title>
+	<script>
+		/*
+		키보드 이벤트
+			keydown : 키보드를 누를때 발생하는 이벤트로 이벤트가
+				발생한 후 텍스트가 입력된다. shift, alt, ctrl
+				등도 모두 인식한다.
+			keyup : 키보드를 눌렀다가 뗄때 발생하는 이벤트.
+				키보드를 누를때 텍스트가 입력되고 땔때 이벤트가
+				발생한다. (keydown에서 인식하는 모든키를 동일하게
+				인식한다.)
+			keypress : 키보드를 누를때 발생하는 이벤트로
+				keydown과 동일하다. 단, shift, ctrl등과 같은 
+				키들은 인식하지 못하고 숫자, 영문키만 인식한다.
+		*/
+
+		var count = 0;
+
+		function fnKeyHandler(flag) {
+			count++;
+			var spanTag = document.getElementById("span");
+			switch (flag) {
+				case 1:
+					spanTag.innerHTML = "keydown이벤트발생" + count;
+					break;
+				case 2:
+					spanTag.innerHTML = "keypress이벤트발생" + count;
+					break;
+				case 3:
+					spanTag.innerHTML = "keyup이벤트발생" + count;
+					break;
+			}
+		}
+		/* 매개변수(입력중인 DOM객체, 글자수, 이동할 DOM의 이름) */
+		function fnJuminFocus(obj, m_length, next_obj) {
+			//입력된 글자수 확인
+			var strLength = obj.value.length;
+			//각 DOM객체의 제한 글자수 확인
+			if (strLength == m_length) {
+				if (m_length == 7) {
+					//'ju2'에서 7글자를 작성하면 알림
+					alert('주민번호 입력완료');
+				}
+				else {
+					//'ju1'에서 입력이 완료되면 'ju2'로 포커스 이동
+					document.getElementById(next_obj).focus();
+				}
+			}
+		}
+
+		function FnKeyEvent(){
+			var span = document.getElementById("keySpan");
+			var keyCode = event.keyCode;
+			span.innerHTML= keyCode;
+
+			if(keyCode==116||keyCode==8){
+				alert("해당 문서에서는 F5, Backspace는 사용할 수 없습니다.");
+				return false;
+			}
+
+		}
+
+	</script>
+</head>
+
+<body>
+	<h2>키보드 이벤트</h2>
+	<h3>key 에벤트 테스트</h3>
+	keydown : <input type="text" onkeydown="fnKeyHandler(1);" />
+	<br />
+	keypress : <input type="text" onkeypress="fnKeyHandler(2);" />
+	<br />
+	keyup : <input type="text" onkeyup="fnKeyHandler(3);" />
+	<br />
+	<span id="span" style="font-size: 1.5em; color: red;"></span>
+
+	<h3>주민등록번호 입력하기</h3>
+	주민등록번호 :
+	<input type="text" id="ju1" size="6" maxlength="6" onkeyup="fnJuminFocus(this,6,'ju2');" />
+	-
+	<input type="text" id="ju2" size="7" maxlength="7" onkeyup="fnJuminFocus(this,7,'');" />
+
+	<h3>keyCode 이용하여 현재키 알아내기</h3>
+
+	F5, Backspace키는 사용불가합니다.
+	<br />
+
+	<input type="text" onkeydown="return FnKeyEvent();" />
+	<br />
+	<span id="keySpan" style="color:blue; font-size: 1.5em;"></span>
+
+
+</body>
+
+</html>

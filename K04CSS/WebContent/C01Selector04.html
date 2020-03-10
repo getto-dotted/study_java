@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>C01Selector04.html</title>
+<style>
+	
+	/* 반응선택자 : 마우스의 반응에 따라 태그를 선택한다.
+		hover : 해당 영역에 마우스를 올렸을때 선택됨
+		active: 해당 영역에 마우스를 클릭했을때 선택됨.
+	 */
+	ul > li {font-size: 30px; font-weight: ; color: green; width: 200px;}
+	
+	li:hover{color: red; font-weight: bold; text-decoration: underline;}	
+	
+	li:active {color: yellow; background-color: black;	}
+	
+	/* 상태선택자 : 요소의 현재상태에 따라 태그를 선택한다.
+		focus : 포커스를 얻었을때
+		enabled : 사용할 수 있는 (기본) 상태일때
+		disabled : 사용할 수 없는 상태일때
+	 */
+	 
+	 /* text-decoration : 텍스트에 밑줄과 같은 효과를 줄때 사용하는 속성이다.
+	 	none : 텍스트에 아무런 효과도 주지않음
+	 	underline : 텍스트에 밑줄이 나타나게 함
+	 	line-through : strike와 같이 중간에 라인을 표시함
+	 		(크롬, IE 지원되지 않음) 
+ 		overline : 텍스트 윗부분에 라인을 표시함*/
+	
+	input:focus{border: 2px red dotted; background-color: yellow;}
+	
+	input:enabled {color: red; font-weight: bold;}
+	
+	input:disabled {color: blue; background-color: aqua; border: 1px gray solid;}
+	
+	a{text-decoration: none; color:black;}
+	a:hover{/*링크에 마우스를 올렸을때  */text-decoration: underline; color:green;}
+	a:active{/* 링크에 마우스를 클릭했을때 */ text-decoration: overline; color: red;}
+	a:visited {/* 방문한 이력이 있을때 선택됨 */ text-decoration: line-through; color: red;}
+	
+	
+</style>
+</head>
+<body>
+	<h2>반응선택자</h2>
+	<!-- div>ul>li*5 -->
+	<div>
+		<ul>
+			<li>메뉴1</li>
+			<li>메뉴2</li>
+			<li>메뉴3</li>
+			<li>메뉴4</li>
+			<li>메뉴5</li>
+		</ul>
+	</div>
+
+	<h2>상태선택자</h2>
+	<div>
+		<form action="">
+		이름 : <input type="text" name="name" />
+		<br />
+		아이디 : <input type="text" name="id"/>
+		<br />
+		패스워드 : <input type="text" name="pwd" value="1234" disabled/>
+		</form>	
+	</div>
+	
+	<h2>텍스트 효과주기</h2>
+	<!-- div>ul.link>(li>a)*6 -->
+	<div>
+		<ul class="link">
+			<li><a href="http://naver.com">네이버</a></li>
+			<li><a href="http://nate.com">네이트</a></li>
+			<li><a href="http://daum.net">다음</a></li>
+			<li><a href="http://google.com">구글</a></li>
+			<li><a href="http://koreavc.or.kr">한직전</a></li>
+			<li><a href="http://yahoo.com">야후</a></li>
+		</ul>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</body>
+</html>

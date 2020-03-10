@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>J13LocationHistory.html</title>
+<script>
+	function fnLogin(){
+		/* 
+		location : 페이지를 이동할때 사용한다. target을
+			걸어야 할 경우 target.location 형식으로 사용한다.
+		history : 페이지 이동은 동일하나 이전에 이동했던
+			내역이 있는 경우에만 사용가능하다. IE or 크롬의
+			'뒤로' 버튼과 동일한 기능이다.
+		*/
+		
+		var id = document.getElementById("user_id").value;
+		var pw = document.getElementById("user_pw").value;
+
+		if(id=="Kim" && pw=="1234"){
+			location.href="./pages/history01.html";
+		}
+		else{
+			location.href="./pages/history02.html";
+		}
+	}
+</script>
+</head>
+<body> 
+	<h2>로그인 화면</h2>
+	아이디 : <input type="text" id="user_id" />
+	<br/>
+	패스워드 : <input type="text" id="user_pw" />
+	<br />
+	<input type="button" value="로그인" 
+		onclick="fnLogin();" />
+	
+	<br />	
+</body>
+
+</html>

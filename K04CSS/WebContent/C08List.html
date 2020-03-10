@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>C08List.html</title>
+<link rel="stylesheet" href="./style/border.css" />
+<style>
+	/* li태그로 top메뉴 만들기 */
+	#topmenu li{
+		display:inline;/* block속성을 inline속성으로 변경(세로배치->가로배치) */
+		border-right: 2px gray solid;/* 오른쪽 테두리만 2px로 만듦. */
+		padding-right: 7px;/* 오른쪽만 패딩을 적용 */
+	
+	}
+	#topmenu li:last-child {
+	/* 마지막 li요소의 border를 제거 */
+		border: none;	
+	}
+	#topmenu li a {
+	/* 링크가 있는 부분에 밑줄제거 및 색상적용 */
+		text-decoration: none;
+		color: black;
+	
+	}
+	#topmenu li a:hover {
+	/* 링크에 마우스오버시 밑줄처리 */
+		text-decoration: underline;
+		color: silver;
+	}
+	/* 리스트의 불릿모양과 위치 설정하기 */
+	.sport{
+		border: 5px solid blue;
+		/* 불릿모양을 로마소문자로 설정 */
+		list-style-type: lower-roman;
+		/* 리스트의 불릿 위치를 설정한다. 
+		li태그 안쪽 혹은 바깥쪽*/
+		list-style-position: inside;
+	}
+	
+	.sport li {
+		border: 1px solid red;
+	}
+	
+	/* 리스트에 기본 불릿대신 커스텀 이미지 활용 */
+	.food_image {
+		list-style-image:url('./images/bullet.png');
+	}
+	
+	/* 리스트에서 불릿만 제거하기
+	불릿을 제거하면 불릿이 있던 자리만큼 공백이 생기므로 이때는 음수로 margin을 적용한다.
+	단 padding은 음수값을 설정할 수 없다.	 */
+	ul.bullet{
+		list-style-type: none;
+		border:1px solid yellowgreen;
+		margin-left: -30px;
+	}
+	
+
+</style>
+</head>
+<body>
+	<h2>Ul/Ol/Li태그로 메뉴 구현하기</h2>
+	<!-- fieldset>(legend)>ul#topmenu>(li>a[href=#])*5 -->
+	<!-- fieldset>(legend)+ul#topmenu>(li>a[href=#])*5 -->
+	<fieldset>
+		<legend>top메뉴</legend>
+		<ul id="topmenu">
+			<li><a href="#">HOME</a></li>
+			<li><a href="#">회원가입</a></li>
+			<li><a href="#">로그인</a></li>
+			<li><a href="#">장바구니</a></li>
+			<li><a href="#">고객센터</a></li>
+		</ul>		
+	</fieldset>
+	
+	<fieldset>
+		<legend>당신이 가장 좋아하는 스포츠는?</legend>		
+		<!-- ul.sport>li*5 -->
+		<ul class="sport">
+			<li>축구</li>
+			<li>야구</li>
+			<li>배구</li>
+			<li>농구</li>
+			<li>핸드볼</li>
+		</ul>
+	</fieldset>
+		
+		
+	<fieldset>
+		<legend>당신이 가장 좋아하는 음식?</legend>
+		
+		<!-- ul.food_image>li*5 -->
+		<ul class="food_image">
+			<li>짜장면</li>
+			<li>짬뽕</li>
+			<li>된장찌게</li>
+			<li>김치찌게</li>
+			<li>물냉</li>
+			<li>비냉</li>
+		</ul>
+	</fieldset>
+
+	<fieldset>
+		<legend>당신이 좋아하는 위인은?</legend>
+		<h3>블릿만 제거하기</h3>
+		그냥Text
+		<ul class="bullet">
+			<li>세종대왕</li>
+			<li>이순신</li>
+			<li>정조대왕</li>
+		</ul>
+	</fieldset>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

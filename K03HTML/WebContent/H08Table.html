@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>H08Table.html-테이블</title>
+</head>
+<body>
+<!--table>tr*2>td*3  -->
+	<h2>table 태그</h2>
+	
+<!-- 
+	table 태그의 속성
+		-bgcolor : 표의 배경색을 지정한다.
+		-cellpadding : cell과 컨텐츠 사이의 여백을 지정한다.
+		-cellspacing : cell과 cell사이의 여백을 지정한다.
+		
+	table태그 : 표 형태로 컨텐츠를 표시하기 위한 태그.
+		하위태그로 tr, td, th와 같은 태그가 있다.
+		-tr(Table Row) : 행을 표시한다.
+
+
+
+
+ -->
+	
+	<h3>table 태그의 속성을 이용한 테이블 디자인</h3>
+	<table border="1" cellpadding="10" cellspacing="30" bgcolor="yellow" width="200">
+		<tr>
+			<td>가</td>
+			<td>나</td>
+			<td>다</td>
+		</tr> 
+		<tr>
+			<td>라</td>
+			<td>마</td>
+			<td>바</td>
+		</tr>
+	</table>
+
+
+	<h3>셀병합</h3>
+	<h4>병합전 테이블 형태</h4>
+	
+	<table width="300" border="1">
+		<tr>
+			<td>1행1열</td>
+			<td>1행2열</td>
+			<td>1행3열</td>
+		</tr>
+		<tr>
+			<td>2행1열</td>
+			<td>2행2열</td>
+			<td>2행3열</td>
+		</tr>
+		<tr>
+			<td>3행1열</td>
+			<td>3행2열</td>
+			<td>3행3열</td>
+		</tr>
+	</table>
+
+
+	<h4>1행의 3개의 셀을 병합하기</h4>
+	
+	<table width="300" border="1">
+		<tr>			
+			<td colspan=3>1행1열</td>
+			<!-- <td>1행2열</td>
+			<td>1행3열</td> -->
+		</tr>
+		<tr>
+			<td>2행1열</td>
+			<td>2행2열</td>
+			<td>2행3열</td>
+		</tr>
+		<tr>
+			<td>3행1열</td>
+			<td>3행2열</td>
+			<td>3행3열</td>
+		</tr>
+	</table>
+
+	<h4>2행2열과 3행2열을 병합하기(세로형태의 병합)</h4>
+	<table width="300" border="1">
+		<tr>			
+			<td>1행1열</td>
+			<td>1행2열</td>
+			<td>1행3열</td>
+		</tr>
+		<tr>
+			<td>2행1열</td>
+			<td rowspan=2>2행2열</td>
+			<td>2행3열</td>
+		</tr>
+		<tr>
+			<td>3행1열</td>
+		<!-- 	<td>3행2열</td> -->
+			<td>3행3열</td>
+		</tr>
+	</table>
+
+	<h4>1행의 3개의 셀/2행1열과 3행1열을 병합하기</h4>
+	<table width="300" border="1">
+		<tr>			
+			<td colspan=3>1행1열</td>
+			<!-- <td>1행2열</td>
+			<td>1행3열</td> -->
+		</tr>
+		<tr>
+			<td rowspan=2>2행1열</td>
+			<td>2행2열</td>
+			<td>2행3열</td>
+		</tr>
+		<tr>
+			<!-- <td>3행1열</td> -->
+			<td>3행2열</td>
+			<td>3행3열</td>
+		</tr>
+	</table>
+<!-- 
+table의 하위태그
+	-td : Table Data Cell의 약어로 하나의 칸(셀)을
+		표시하낟. 반드시 tr태그 하위에 삽입되어야 한다.
+	-th : Table Header의 약어로 td와 동일하지만 텍스트가
+		자동으로 bold(진하게)로 표시되면서
+		가운데(center)정렬된다. 주로 표에서 타이틀을
+		표시할때 사용한다.
+ -->
+	<h4>td와 th의 차이 - 내용과 제목</h4>
+	
+	<table width="500" border="1">
+		<tr>
+			<th>1행1열[th]</th>
+			<th>1행2열[th]</th>
+			<th>1행3열[th]</th>
+		</tr>
+		<tr>
+			<td>2행1열</td>
+			<td>2행2열</td>
+			<td>2행3열</td>
+		</tr>
+		<tr>
+			<td>3행1열</td>
+			<td>3행2열</td>
+			<td>3행3열</td>
+		</tr>
+	</table>
+<!-- 
+웹표준을 위한 테이블 속성
+-caption : 테이블의 제목 표시
+   -summary : 테이블의 요약 설명
+   -colgroup : col태그를 그룹으로 관리하기 위한 태그
+-col : 테이블의 하나 이상의 열 td에 대해 속성을 정의한것.
+	단, colgroup 요소안에서 사용가능함
+   -tbody : 표에서 내용영역에 해당하는 부분을 의미적으로
+       구분하기 위한 태그
+   -thead : 표에서 헤더영역에 해당하는 부분을 의미적으로 구분하기 
+   	위한 태그
+   -tfoot : 표에서 푸터영역에 해당하는 부분을 의미적으로
+       구분하기 위한 태그
+ -->
+
+	<h3>웹접근성(웹표준)을 고려한 테이블 속성</h3>
+	
+	<table summary="회사 임직원들의 연봉표입니다." border="1" >
+		<caption>직원연봉표</caption>
+		<thead>
+			<tr>
+				<th style="width:20%">번호</th>
+				<th style="width:50%">이름</th>
+				<th>연봉</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>김길동</td>
+				<td>3000만원</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>박길동</td>
+				<td>5000만원</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th>총급여</th>
+				<td colspan="2">1억 500만원</td>
+			</tr>
+		</tfoot>
+	</table>
+c
+
+	
+	<h3>colgroup 및 col 적용한 테이블</h3>
+	<table summary="회사 임직원들의 연봉표입니다." border="1" >
+		<caption>직원연봉표</caption>
+		<colgroup>
+			<col width="10%"/>
+			<col width="*"/>
+			<col width="30%"/>
+		</colgroup>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>이름</th>
+				<th>연봉</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>김길동</td>
+				<td>3000만원</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>박길동</td>
+				<td>5000만원</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th>총급여</th>
+				<td colspan="2">1억 500만원</td>
+			</tr>
+		</tfoot>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

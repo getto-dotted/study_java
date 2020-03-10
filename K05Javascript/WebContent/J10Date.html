@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>J10Date.html-Core객체</title>
+<script type="text/javascript">
+	/*
+	 Date 객체
+	 var date = new Date();
+	
+	 날짜정보를 가져올 때는 getXXX()계열의 함수를
+	 날짜정보를 설정할 때는 setXXX()계열의 함수를 사용한다.
+	 */
+	var date = new Date();
+	document.write("저장된값:" + date + "<br/>");
+	//1900년부터 현재까지 지난 년도수를 반환함. 1900을 더해야 함.
+	document.write("연도 변환:" + (date.getYear()) + "<br/>");
+	//0~11까지를 반환하므로 1을 더해줘야 함.
+	document.write("월 변환:" + (date.getMonth()) + "<br/>");
+	document.write((date.getYear() + 1900) + "년 " + (date.getMonth() + 1)
+			+ "월 " + date.getDate() + "일 " + date.getHours() + "시 "
+			+ date.getMinutes() + "분 " + date.getSeconds() + "초<br/>");
+
+	date.setMonth(11);//12월로 설정한것임
+	date.setDate(25);
+	document.write("<h2>월/일만 변경후 출력</h2>");
+	document.write((date.getYear() + 1900) + "년 " + (date.getMonth() + 1)
+			+ "월 " + date.getDate() + "일<br/>");
+
+	document.write("<h2>요일얻기</h2>");
+	switch (date.getDay()) {
+	case 0:
+		document.write("일요일");
+		break;
+	case 1:
+		document.write("월요일");
+		break;
+	case 2:
+		document.write("화요일");
+		break;
+	case 3:
+		document.write("수요일");
+		break;
+	case 4:
+		document.write("목요일");
+		break;
+	case 5:
+		document.write("금요일");
+		break;
+	case 6:
+		document.write("토요일");
+		break;
+	}
+
+	//두날짜 사이의 차이 구하기
+	var startDate = new Date(2019, 9, 22);//10월 22일
+	var endDate = new Date();//현재날짜
+	var diff = endDate.getTime() - startDate.getTime();
+	/* 
+		현재날짜를 초단위로 환산해주는 함수.
+		1000분의 1초 단위로 반환하므로 1000을 곱해줘야 한다. 즉 1000이 1초이다.
+	 */
+
+	document.write("<h2>개강일부터 현재까지의 일수는?</h2>");
+	document.write(diff / (1000 * 60 * 60 * 24) + "일<br/>");
+	document.write(Math.round(diff / (1000 * 60 * 60 * 24)) + "일");
+</script>
+</head>
+<body>
+	<div id="newopentimer_print"></div>
+</body>
+</html>

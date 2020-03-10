@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>J14WindowObject02.html</title>
+	<script>
+		/* setTimeout : 매개변수에 주어진 시간이 되면 해당 함수를 딱 한번만 호출할 때 사용함.
+		
+		setInterval : 매개변수에 주어진 시간 간격마다 해당 함수를 지속적으로 호출할 때 사용함.
+		
+		※ 주의사항 : 함수를 호출할 때 반드시 문자열 형태로 호출해야한다.
+			시간은 1/1000초 단위이므로 1초는 1000으로 기술한다.*/
+
+
+		function displayTime() {
+			var date = new Date();
+			var displayClock = document.getElementById("clock");
+			displayClock.innerHTML = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
+		}
+		/* 
+		타이머 변수로 사용하기 위해 전역변수로 선언함. 해당 변수는 HTML문서 어디서나 접근 가능함.
+		*/
+		var timeOut, interVal;
+
+		function fnCallAfter(flag) {
+			if (flag == "T") {
+				timeOut = window.setTimeout("displayTime()", 3000);
+			}
+			else if (flag == "I") {
+				interVal = window.setInterval("displayTime()", 1000);
+			}
+		}
+		
+		function fnCallBreak(flag) {
+			/* 
+			각 타이머 함수의 실행을 중지하고 싶을 때는 참조변수(타이머변수)를 사용한다.
+			*/
+			if (flag == "T") {
+				clearTimeout(timeOut);
+			}
+			else if (flag == "I") {
+				clearInterval(interVal);
+			}
+
+		}
+	
+	</script>
+</head>
+
+<body>
+	<h2>setInterval(), setTimeout() 함수</h2>
+
+	<h3>현재시간</h3>
+	<span id="clock" style="color:red; font-size:2em;font-weight:bold;"></span>
+	<script type="text/javascript">
+		displayTime();
+	</script>
+
+
+	<h3>일정 시간후 함수실행</h3>
+	<input type="button" value="3초후 한번만 실행" onclick="fnCallAfter('T');" />
+	<input type="button" value="함수호출중지" onclick="fnCallBreak('T');" />
+
+
+	<h3>일정 시간마다 함수실행</h3>
+	<input type="button" value="2초마다 계속 실행" onclick="fnCallAfter('I');" />
+	<input type="button" value="함수호출중지" onclick="fnCallBreak('I');" />
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>C09Display/Visibility.html</title>
+<style>
+	div {color : white;}
+
+	fieldset div{ color : white;
+		width : 100px; height: 100px;
+		text-align: center; line-height: 100px;
+	}
+	.div1{background-color: red; width : 100px; height: 100px;}
+	.div2{background-color: blue; width : 100px; height: 100px;}
+	.div3{background-color: green; width : 100px; height: 100px;}
+
+	/* 블럭엘리먼트를 인라인엘리먼트 속성으로 변경함.
+	인라인속성이 되므로 가로/세로 사이즈는 컨텐츠의 크기로 변경됨.
+	즉 크기를 임의로 지정할 수 없음. */
+	.inline div{display: inline;}
+
+	/* 배치는 인라인엘리먼트와 같이 가로형으로 배치되고
+	블럭엘리먼트의 속성은 그대로 유지한다. 즉 가로/세로 크기를 지정할 수 있다. */
+	.inline_block div{display: inline-block;}
+	
+	/* 인라인 속성이 블럭 속성으로 변경되어 세로형으로 배치되고,
+	가로/세로 크기를 지정할 수 있다. */
+	.block span{display: block;}
+
+	/* 리스트 태그를 인라인 속성으로 변경하기 */
+	/*
+	방법1 : 블럭속성을 인라인속성으로 완전히 변경함. 이경우 불릿은 자동으로 제거됨. 
+	가로형 배치가 되지만 가로/세로 크기는 모두 무시됨.*/
+	ul.inline1 li {
+		border: 1px solid pink;
+		display: inline;
+		width: 150px; height: 100px;
+	}
+	
+	/*
+	방법2 : float 속성을 이용해서 배치만 가로형으로 설정함.
+	이때 불릿은 제거되지 않으므로 list-style-type: none으로 제거함.
+	블럭의 속성이 그대로 유지되므로 가로/세로 크기는 적용됨.  */
+	ul.inline2 {list-style-type: none;}
+
+	ul.inline2 li {
+		border: 1px solid blue;
+		float: left;
+		width: 100px; height: 100px;
+	}
+	
+	/*
+	방법3 : 배치는 인라인처럼, 속성은 블럭으로 유지됨.
+	불릿은 자동으로 제거되지만, 박스사이에 약간의 간격이 생기므로
+	margin으로 조절해야 한다.
+	*/
+	ul.inline3 li{
+		border: 1px solid red;
+		display: inline-block;
+		width: 100px; height: 100px;
+		margin-right: -6px;
+	}
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+	<h2>Display VS Visibility</h2>
+
+	<!-- visibility:hidden;일때는 영역은 유지하면서 숨김처리 된다. -->
+	<fieldset>
+		<legend>Visibility속성</legend>
+		<div class="div1">left</div>
+		<div class="div2" style="visibility:hidden;">center</div>
+		<div class="div3">right</div>
+	</fieldset>
+	
+	<!-- display: none; 일때는 영역까지도 같이 사라지면서 숨김처리 된다. -->
+	<fieldset>
+		<legend>Display속성</legend>
+		<div class="div1">left</div>
+		<div class="div2" style="display: none;">center</div>
+		<div class="div3">right</div>
+	</fieldset>
+	<!-- HTML5에서 지원되는 hidden속성은 display와 동일한 효과가 적용된다. -->
+	<fieldset>
+		<legend>HTML5의 hidden속성</legend>
+		<div class="div1">left</div>
+		<div class="div2" hidden>center</div>
+		<div class="div3">right</div>
+	</fieldset>
+
+	<h3>display속성으로 block과 inline속성 변경하기</h3>
+	
+	<h4>block -> inline</h4>
+	<div class="inline">
+		<div class="div1">Left</div>
+		<div class="div2">Center</div>
+		<div class="div3">Right</div>
+	</div>
+	
+	
+	<h4>block -> inline_block</h4>
+	<div class="inline_block">
+		<div class="div1">Left</div>
+		<div class="div2">Center</div>
+		<div class="div3">Right</div>
+	</div>
+	
+	
+	<h4>inline -> block</h4>
+	<div class="block">
+		<span class="div1">Left</span>
+		<span class="div2">Center</span>
+		<span class="div3">Right</span>
+	</div>
+
+	<fieldset>
+		<legend>당신이 가장 좋아하는 동물은?</legend>	
+		<h3>li를 인라인엘리먼트로 변경하는 방법1</h3>
+		<ul class="inline1">
+			<li>강아지</li>
+			<li>고양이</li>
+			<li>이구아나</li>
+			<li>토끼</li>
+		</ul>
+	</fieldset>
+	<fieldset>
+		<legend>당신이 가장 좋아하는 동물은?</legend>
+	
+		<h3>li를 인라인엘리먼트로 변경하는 방법2</h3>
+		<ul class="inline2">
+			<li>강아지</li>
+			<li>고양이</li>
+			<li>이구아나</li>
+			<li>토끼</li>
+		</ul>
+	</fieldset>
+	
+	<fieldset>
+		<legend>당신이 가장 좋아하는 동물은?</legend>
+	
+		<h3>li를 인라인엘리먼트로 변경하는 방법3</h3>
+		
+		<ul class="inline3">
+			<li>강아지</li>
+			<li>고양이</li>
+			<li>이구아나</li>
+			<li>토끼</li>
+		</ul>
+	</fieldset>
+	
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>project1</display-name>
+  
+   <!-- 컨텍스트 초기화 파라미터 지정 -->
+  <context-param>
+  	<param-name>JDBCDriver</param-name>
+  	<param-value>oracle.jdbc.OracleDriver</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>ConnectionURL</param-name>
+  	<param-value>jdbc:oracle:thin://@localhost:1521:orcl</param-value>
+  </context-param>
+  
+  <!-- 게시판 페이징 구현을 위한 환경설정값 PAGE_SIZE : 게시판 리스트 한 페이지에 출력할 게시물의 갯수 BLOCK_PAGE 
+		: 리스트 하단 페이지 바로가기 링크에 출력할 페이지의 갯수 -->
+
+	<context-param>
+		<param-name>PAGE_SIZE</param-name>
+		<param-value>10</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>BLOCK_PAGE</param-name>
+		<param-value>5</param-value>
+	</context-param>
+	
+	
+	<!-- 메인 공지 리스트 -->
+	<servlet>
+		<servlet-name>MainNotice</servlet-name>
+		<servlet-class>noticeController.MainNoticeCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MainNotice</servlet-name>
+		<url-pattern>/main/main</url-pattern>
+	</servlet-mapping>
+	<!-- 리스트 -->
+	<servlet>
+		<servlet-name>noticeList</servlet-name>
+		<servlet-class>noticeController.ListCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>noticeList</servlet-name>
+		<url-pattern>/notice/sub01_list2</url-pattern>
+	</servlet-mapping>	
+	<!-- 작성글 상세보기 -->
+	<servlet>
+		<servlet-name>noticeView</servlet-name>
+		<servlet-class>noticeController.ViewCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>noticeView</servlet-name>
+		<url-pattern>/notice/sub01_view2</url-pattern>
+	</servlet-mapping>
+	<!-- 글쓰기 -->
+	<servlet>
+		<servlet-name>noticeWrite</servlet-name>
+		<servlet-class>noticeController.WriteCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>noticeWrite</servlet-name>
+		<url-pattern>/notice/sub01_write2</url-pattern>
+	</servlet-mapping>
+	<!-- 글수정하기 -->
+	<servlet>
+		<servlet-name>noticeEdit</servlet-name>
+		<servlet-class>noticeController.EditCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>noticeEdit</servlet-name>
+		<url-pattern>/notice/sub01_edit</url-pattern>
+	</servlet-mapping>
+	<!-- 글삭제하기 -->
+	<servlet>
+		<servlet-name>noticeDelete</servlet-name>
+		<servlet-class>noticeController.DeleteCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>noticeDelete</servlet-name>
+		<url-pattern>/notice/sub01_Delete</url-pattern>
+	</servlet-mapping>
+	<!-- 본인확인 -->
+	<servlet>
+		<servlet-name>noticeIden</servlet-name>
+		<servlet-class>noticeController.IdenCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>noticeIden</servlet-name>
+		<url-pattern>/notice/sub01_Iden</url-pattern>
+	</servlet-mapping>
+
+
+<!-- 자게 리스트 -->
+	
+	<servlet>
+		<servlet-name>freeList</servlet-name>
+		<servlet-class>freeController.ListCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>freeList</servlet-name>
+		<url-pattern>/free/List</url-pattern>
+	</servlet-mapping>
+	<!-- 작성글 상세보기 -->
+	<servlet>
+		<servlet-name>freeView</servlet-name>
+		<servlet-class>freeController.ViewCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>freeView</servlet-name>
+		<url-pattern>/free/View</url-pattern>
+	</servlet-mapping>
+	<!-- 글쓰기 -->
+	<servlet>
+		<servlet-name>freeWrite</servlet-name>
+		<servlet-class>freeController.WriteCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>freeWrite</servlet-name>
+		<url-pattern>/free/Write</url-pattern>
+	</servlet-mapping>
+	<!-- 글수정하기 -->
+	<servlet>
+		<servlet-name>freeEdit</servlet-name>
+		<servlet-class>freeController.EditCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>freeEdit</servlet-name>
+		<url-pattern>/free/Edit</url-pattern>
+	</servlet-mapping>
+	<!-- 글삭제하기 -->
+	<servlet>
+		<servlet-name>freeDelete</servlet-name>
+		<servlet-class>freeController.DeleteCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>freeDelete</servlet-name>
+		<url-pattern>/free/Delete</url-pattern>
+	</servlet-mapping>
+	<!-- 본인확인 -->
+	<servlet>
+		<servlet-name>freeIden</servlet-name>
+		<servlet-class>freeController.IdenCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>freeIden</servlet-name>
+		<url-pattern>/free/Identify</url-pattern>
+	</servlet-mapping>
+
+
+  
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

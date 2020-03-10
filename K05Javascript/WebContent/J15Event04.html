@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>J15Event04.html</title>
+	<!-- 
+	change : <select>에서 <option>을 바꿀때마다 발생되는 이벤트.
+			select태그에서 사용가능.
+ 	-->
+	<script>
+		function fnSelect(obj) {
+			//매개변수 obj와 아래 obj2는 동일한 엘리먼트
+			//var obj2 = document.getElementById("fruit");
+
+			//선택한 항목의 value값 가져오기
+			alert("선택항목의 인덱스값:" + obj.selectedIndex);
+			alert("value 가져오기:" + obj.value);
+			alert("text 가져오기:" + obj[obj.selectedIndex].text);
+			/* obj[obj.selectedIndex].text = "타노스당함"; */
+		}
+
+		function fnSubmit() {
+			var fn = document.subForm;
+			/* form의 하위요소에 접근할때는 getEXXX계열의 함수를 
+			사용하지 ㅇ낳고 form의 name속성을 통해서도 접근가능하다. */
+			if (fn.txt.value == "") {
+				/* text상자에 아무값도 입력되지 않으면 false를 반환하여
+				폼값이 전송되지 않게 처리한다. */
+				alert("텍스트를 입력하세요");
+				fn.txt.focus();
+				return false;
+			}
+		}
+		window.onload = function () {
+			/* form태그는 HTML페이지내에 한개이상 사용가능하다배열형태로 접근할 수 있다. 
+			즉 순서대로  0,1과 같이 인덱스가 부여된다.*/
+			document.forms[0].onreset = function () {
+				alert("reset 이벤트 발생");
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<h2>click 이벤트</h2>
+
+	<div style="border: 1px solid red; cursor: pointer;" onclick="alert('div에 클릭이벤트 발생됨');">div클릭이벤트</div>
+
+	<h3 style="border: 1px solid blue; cursor: pointer; " onclick="alert('h3에 클릭이벤트 발생됨');">h3클릭이벤트</h3>
+
+
+	<h2>select에서 발생되는 change이벤트</h2>
+	<h3>당신이 좋아하는 과일은?</h3>
+	<!-- this를 매개변수로 전달하는 것은 select엘리먼트의
+		DOM객체를 전달하는 것이다. -->
+	<select style="width:500px" id="fruit" onchange="fnSelect(this);">
+		<option value="">선택하세요</option>
+		<option value="apple">사과</option>
+		<option value="orange">오렌지</option>
+		<option value="mango">망고</option>
+		<option value="banana">바나나</option>
+		<option value="guaba">구아바</option>
+	</select>
+
+	<!-- submit이벤트 : type='submit' 또는 type='image'인 경우
+	클릭할때 발생하는 이벤트로 폼값을 지정된 URL로 전송하게 된다.
+
+	reset이벤트 : type='reset'을 눌렀을때 발생하는 이벤트폼에 입력된 초기상태로 되돌려준다.
+
+	위는 둘다 form태그 안에서 사용가능하다.
+	-->
+	<h2>submit/ reset 이벤트</h2>
+	<!-- onsubmit 이벤트 리스너에 false값이 반환되면 해당 폼값은 서버로 전송되지 않는다. -->
+	<form action="http://danawa.com/" name="subForm" onsubmit="return fnSubmit();">
+		<input type="text" name="txt" value="전송값입니다." />
+		<input type="reset" value="리셋" />
+		<input type="submit" value="서브밋(전송)" />
+		<input type="image" src="./images/button.jpg" />
+
+
+	</form>
+
+
+</body>
+
+</html>

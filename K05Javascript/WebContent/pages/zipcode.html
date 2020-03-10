@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>zipcode.html</title>
+	<script>
+		/* 검색된 우편번호를 클릭하면 부모창으로 우편번호 데이터를 보내주고 창을 닫는다. */
+		function setZipcode(zip, addr) {
+			/* 현재 팝업창(자식창)에서 부모창으로 데이터를 보내야 할때는 opener 속성을 이용한다.
+			opener.getElementXXXX() 형식으로 사용하면 된다. */
+			opener.document.getElementById("zipcode").value = zip;
+			opener.document.getElementById("addr1").value = addr;
+			opener.document.getElementById("addr2").focus();
+			self.close();
+		}
+		function zipClose() {
+			alert("창을 닫습니다.");
+			self.close();
+
+		}
+	</script>
+</head>
+
+<body>
+
+	<h2>우편번호 검색하기</h2>
+	<table border="1" width="100%">
+		<colgroup>
+			<col width="20%" />
+			<col width="*" />
+		</colgroup>
+		<tr>
+			<th>우편번호</th>
+			<th>주소</th>
+		</tr>
+		<tr>
+			<td>11111</td>
+			<td>
+				<a href="javascript:setZipcode('11111','서울시 종로구')">
+					서울시 종로구
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td>22222</td>
+			<td>
+				<a href="javascript:setZipcode('22222','서울시 관악구')">
+					서울시 관악구
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td>33333</td>
+			<td>
+				<a href="javascript:setZipcode('33333','서울시 금천구')">
+					서울시 금천구
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td>44444</td>
+			<td>
+				<a href="javascript:setZipcode('44444','서울시 구로구')">
+					서울시 구로구
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td>55555</td>
+			<td>
+				<a href="javascript:setZipcode('55555','서울시 성북구')">
+					서울시 성북구
+				</a>
+			</td>
+		</tr>
+	</table>
+	<p style="text-align:center;">
+		<button onclick="zipClose();">우편번호검색창닫기</button>
+	</p>
+
+
+
+
+</body>
+
+</html>

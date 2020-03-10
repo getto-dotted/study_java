@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>H12Video.html</title>
+</head>
+<body>
+<!-- 
+autoplay : 화면이 로딩될때 해당 동영상을 즉시 플레이 하겠다는 옵션.
+	하지만 최근에는 사용자가 원할때만 플레이할 수 있도록 autoplay를 지원하지 않는 추세임.
+controls : 동영상을 플레이할때 컨트롤 바를 보이게할지 여부를지정하는 속성.
+ -->
+	<h2>기본 video태그</h2>
+	<video src="./media/video.mp4" autoplay="false" controls width="300" height="200">
+		해당 브라우저가 video를 지원하지 않는 경우
+		<a href="./media/video.mp4">여기</a>를 클릭하세요
+	</video>
+	<!-- 해당 웹브라우저가 video태그를 지원하지 않는다면 본인 컴퓨터로 미디어 파일을 다운로드 받은 후 
+	내장 프로그램을 통해 재생할 수 있도록 처리한다. -->
+	
+<!-- 
+source 하위태그 : 웹브라우저가 모든 포맷을 지원하지 못하기 때문에 여러 항목중 해당 브라우저가
+	지원하는 포맷의 파일을 찾아 플레이할 수 있도록 하는 태그.
+	즉, 미디어를 여러개 설정할때 사용하는 요소라고 생각하면 됨.
+ -->	
+	
+	<h2>video의 하위태그 source 사용하기</h2>
+	<video autoplay="autoplay" controls width="300" height="200">
+		<source src="./media/video.3gp"></source>
+		<!-- <source src="./media/video.mp4"></source>
+		<source src="./media/My_Love.mp3"></source> -->
+		해당 브라우저가 video를 지원하지 않는 경우
+		<a href="./media/video.mp4">여기</a>를 클릭하세요
+	</video>
+	
+	<h2>Java script를 이용한 커스텀 비디오 만들기</h2>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>J09String.html - Core객체</title>
+<script type="text/javascript">
+/*
+String객체 : 
+		방법1] var 변수명 = new String("문자열");
+		방법2] var 변수명 = '문자열'; 혹은 "문자열"
+			=>즉 ' 이나 " 뭐든 상관없다.
+			
+문자열함수 사용시
+	변수명.함수();
+	"문자열".함수();
+ */
+
+var str1 = "Hello Javascript";
+var str2 = '안녕 자바스크립트';
+var str3 = new String("Hi 자바스크립트");
+
+document.write("str1의 길이:" + str1.length + "<br/>");
+
+document.write("링크걸기(함수):" + str2.link("http://naver.com") + "<br/>");
+
+document.write("대문자로:" + str1.toUpperCase()+ "<br/>");
+document.write("소문자로:" + str1.toLowerCase()+ "<br/>");
+
+
+//문자열에서 특정 인덱스의 문자 반환
+document.write(str1.charAt(1));//e
+document.write("<br/>");
+
+//문자열 잘라내기 : substring(시작, 끝)
+document.write("Academy".substring(3,7));
+document.write("<br/>");
+//문자열 잘라내기 : substr(시작, 길이)
+document.write("Academy".substr(3,4));
+document.write("<br/>");
+
+/*문자열을 문자형배열처럼 사용
+ Java에서는 toCharArray()를 통해 변환해서 사용
+ */
+for (var i = 0; i < str2.length; i++) {
+	document.write("str2["+ i +"]="+ str2[i]+"<br/>");
+}
+document.write("<br/>");
+
+/*
+시나리오] 문자열을 매개변수로 전달받아 숫자형식이면 true, 
+숫자형식이 아니면 false를 반환하는 함수를 작성하시오.
+ */
+function isNumber(param){
+	for (var i = 0; i < param.length; i++) {
+		if(!(param[i].charCodeAt(0)>=48 && param[i].charCodeAt(0)<=57))
+			{return false;}
+	}
+	return true;
+}
+
+var isNum1 = isNumber("100");// 결과 : 숫자형식입니다.
+(isNum1 == true) ? document.write("숫자형식<br/>") : document.write("숫자형식아님<br/>");
+
+
+var isNum2 = isNumber("100A");// 결과 : 숫자형식이 아닙니다.
+(isNum2 == true) ? document.write("숫자형식<br/>") : document.write("숫자형식아님<br/>");
+
+//split() 함수 : 구분자로 문자열을 분리해서 배열로 반환
+var tel = "010-1234-5678";
+var telArr = tel.split("-");
+for (var i = 0; i < telArr.length; i++) {
+	document.write("telArr["+ i +"]=" + telArr[i] + "<br/>");
+}
+
+
+/*
+시나리오] 아래 이메일 주소에서 @와 . 사이에 있는 값만
+추출하여 출력하는 프로그램을 작성하시오.
+xxx@yyy.co.kr 이라면 yyy만 출력되어야 한다.
+ */
+
+var emailArray =["kim@naver.com", "sung@hanmail.net", "park@nate.com"];
+var getDomainStr = function(emilArr){
+	
+	for (var i = 0; i < emailArray.length; i++) {
+		
+		//indexOf()로 @와 .의 index를 찾아서 문자열을 잘라서 처리.
+		var startIdx = emailArray[i].indexOf('@')+1;
+		var lastIdx = emailArray[i].indexOf('.');
+		var resultStr = emailArray[i].substring(startIdx, lastIdx);
+		document.write("결과1(indexOf):"+ resultStr +"<br/>");
+		
+		//split()으로 @와 .을 구분자로 문자열 자체를 잘라서 도에인 부분을 추출함.
+		var firstArr = emailArray[i].split('@');
+		var secondArr = firstArr[1].split('.');
+		document.write("결과2(split):"+secondArr[0]+"<br/><br/>");
+	}
+	
+}
+document.write("<h2>연습문제>도메인 추출하기</h2>")
+getDomainStr(emailArray);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

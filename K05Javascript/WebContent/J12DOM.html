@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>J12DOM.html</title>
+	<script>
+		/* DOM(Document Object Model)객체 얻어오기
+
+		1.태그명으로 얻어오기
+			document.getElementsByTagName("태그명");
+		2.name속성으로 얻어오기
+			document.getElementsByName("name속성값");
+		3.클래스명으로 얻어오기
+			document.getElementsByClassName("class속성값");
+		4.id값으로 얻어오기
+			document.getElementById("id속성값");
+
+		※1,2,3번은 문서상에 1개이상 존재할 수 있으므로 배열의
+		형태로 반환된다. 단, 해당 객체가 없을때에는 길이가 0인
+		배열을 반환한다. 또한 getElements 즉's'가 붙음을 유의하자.
+		(오류가 많이 발생하는 부분임)
+		4번은 하나의 값만 존재하므로 getElement로 s가 없다. */
+
+
+
+		function getByClass(){
+			//클래스명을 통해 DOM객체를 배열형태로 가져온다.
+			var portals = document.getElementsByClassName("portal");
+			for(var i=0; i<portals.length; i++){
+				//시작태그와 종료태그 사이의 컨텐츠를 가져온다.
+				console.log(portals[i].innerHTML);
+			}
+		}
+
+
+		function getByTag(){
+			//checkbox박스3개, text박스2개, button3개 => 총 8개
+
+			var inputs = document.getElementsByTagName("input");
+			var checkString="", inputString="";
+			console.log("input의 갯수:"+inputs.length);
+
+			for (var i =0;  i < inputs.length; i++) {
+				/*type속성을 통해 input의 종류를 파악한다.
+				그외 name, size, value 등의 모든 속성에 대해서도 체크가
+				가능하고 또한 다른 값으로 변경하는 것도 가능하다.*/
+				if(inputs[i].type=="checkbox" && inputs[i].checked==true){
+					//type이 checkbox이면서 체크가 된 항목
+					checkString += inputs[i].value+" ";
+				}
+				if(inputs[i].type=="text"){
+					inputString += inputs[i].value;
+				}
+			}
+			alert("선택한 값:"+ checkString + " 입력한 값 :"+ inputString);
+		}	
+
+		function getByName(){
+			var names = document.getElementsByName("inter");
+			var chk_yes='', chk_no='';
+			for (var i = 0;  i < names.length; i++) {
+				if(names[i].checked==true){
+					names[i].checked = null;
+					/*names[i].checked = false;
+					체크박스의 체크를 해제할때의 2가지 방법*/
+					
+					chk_yes += names[i].value+" ";
+				}
+				else if(names[i].checked==false){
+					names[i].checked = 'checked';
+					/* names[i].checked = "true";
+					체크박스를 체크할때의 두가지 방법
+					*/
+					chk_no += names[i].value+" ";
+				}
+			}
+			alert("반전하기전 체크된 항목:"+chk_yes+", 체크안된 항목:"+chk_no);
+		}
+
+		function fnChangeImg(imgNum){
+			var img_tag = document.getElementById("trump");
+			img_tag.src = "./images/"+ imgNum+".jpg";
+			img_tag.width = parseInt(imgNum * 30);
+		}
+
+
+	</script>
+</head>
+
+<body>
+	<h2>DOM객체 사용하기</h2>
+		
+	<h3>input - 체크박스</h3>
+	<input type="checkbox" name="inter" value="POL" checked="checked" />정치
+	<input type="checkbox" name="inter" value="ECO" />경제
+	<input type="checkbox" name="inter" value="ENT" checked="checked" />연예
+
+	<h3>input - 텍스트박스</h3>
+	아이디 : <input type="text" name="user_id" placeholder="아뒤입력하삼" /> <br />
+	패스워드 : <input type="text" name="user_pass" placeholder="패쓰워드입력하삼" />
+
+	<h3>링크 - 클래스명 없음</h3>
+	<ul>
+		<li><a href="http://www.naver.com">네이바</a></li>
+		<li><a href="http://daum.net">도움</a></li>
+		<li><a href="http://www.nate.com">너이트</a></li>
+	</ul>
+
+	<h2>링크 - 클래스명 있음</h2>
+	<ul>
+		<li><a href="#" class="portal">네<b>이</b>버</a></li>
+		<li><a href="#" class="portal">다음</a></li>
+		<li><a href="#" class="portal">네이트</a></li>
+	</ul>
+
+
+	<input type="button" value="class속성으로DOM객체얻기" onclick="getByClass();" />
+	<input type="button" value="태그명으로DOM객체얻기" onclick="getByTag();" />
+	<input type="button" value="name속성으로DOM객체얻기" onclick="getByName();" />
+
+
+	<h2>동적으로 이미지 교체하기(ID로 DOM객체얻기)</h2>
+	<fieldset>
+		<legend>이미지 동적 교체</legend>
+		<a href="javascript:fnChangeImg(1);">1번이미지</a>
+		<a href="javascript:fnChangeImg(2);">2번이미지</a>
+		<a href="javascript:fnChangeImg(3);">3번이미지</a>
+		<a href="javascript:fnChangeImg(4);">4번이미지</a>
+		<a href="javascript:fnChangeImg(5);">5번이미지</a>
+		<a href="javascript:fnChangeImg(6);">6번이미지</a>
+		<a href="javascript:fnChangeImg(7);">7번이미지</a>
+		<a href="javascript:fnChangeImg(8);">8번이미지</a>
+		<a href="javascript:fnChangeImg(9);">9번이미지</a>
+		<a href="javascript:fnChangeImg(10);">10번이미지</a>
+		<hr />
+		<img id="trump" src="" width="100" alt="이미지교체하기" />
+	</fieldset>
+
+	<br /><br /><br /><br /><br /><br /><br /><br />
+
+
+</body>
+
+</html>

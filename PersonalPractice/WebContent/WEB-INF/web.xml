@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>PersonalPractice</display-name>
+  
+    <!-- 컨텍스트 초기화 파라미터 지정 -->
+  <context-param>
+  	<param-name>JDBCDriver</param-name>
+  	<param-value>oracle.jdbc.OracleDriver</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>ConnectionURL</param-name>
+  	<param-value>jdbc:oracle:thin://@localhost:1521:orcl</param-value>
+  </context-param>
+  
+  <!-- 
+  게시판 페이징 구현을 위한 환경설정값
+  	PAGE_SIZE : 게시판 리스트 한 페이지에 출력할 게시물의 갯수
+  	BLOCK_PAGE : 리스트 하단 페이지 바로가기 링크에 출력할 페이지의 갯수
+   -->
+  
+  <context-param>
+  	<param-name>PAGE_SIZE</param-name>
+  	<param-value>5</param-value>
+  </context-param>
+
+  <context-param>
+  	<param-name>BLOCK_PAGE</param-name>
+  	<param-value>5</param-value>
+  </context-param>
+  
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

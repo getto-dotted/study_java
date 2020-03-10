@@ -1,0 +1,15 @@
+	.content{
+	margin: 0 auto;
+	width: 80%;
+	color: yellow;
+	padding:0px;
+	box-sizing: border-box;
+}
+
+.content p {
+	width: 100%;
+	font-size: 1.5em;
+	border: 2px solid red;
+	box-sizing: border-box;
+	/* p영역의 전체 사이즈를 border와 관계없이 100%로 정확히 고정한다. */
+}
